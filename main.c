@@ -6,13 +6,14 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/17 19:04:26 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:05:44 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/ft_atoi.c"
-//Pour buildin
+// #include "./libft/ft_atoi.c"
+///Pour buildin
 #include <unistd.h>
+///
 
 int	main(int argc, char **argv)
 {
