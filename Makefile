@@ -1,11 +1,9 @@
 CC				=	cc
-CFLAGS			=	-Wextra -Wall -Werror
-#-I ./libft
-# NAME			=	libftprintf.a
+CFLAGS			=	-Wextra -Wall -Werror -I ./libft
 NAME			=	push_swap
 RM				=	rm -f
-# MAKEFILE_LIBFT	=	./libft/
-# LIBFT_PATH		=	./libft/libft.a
+MAKEFILE_LIBFT	=	./libft/
+LIBFT_PATH		=	./libft/libft.a
 
 SRCS			=	./main.c
 
@@ -13,16 +11,19 @@ OBJS			=	$(SRCS:.c=.o)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME):		$(OBJS) $(LIBFT_PATH)
+				cp $(LIBFT_PATH) $(NAME)
+				ar -rc $(NAME) $(OBJS)
 
-# $(LIBFT_PATH):
-# 				make -C $(MAKEFILE_LIBFT)
+$(LIBFT_PATH):	
+				make -C $(MAKEFILE_LIBFT)
 
 clean:			
+				make clean -C $(MAKEFILE_LIBFT)
 				$(RM) $(OBJS)
 
 fclean:			clean
+				make fclean -C $(MAKEFILE_LIBFT)
 				$(RM) $(NAME)
 
 re: 			fclean all
