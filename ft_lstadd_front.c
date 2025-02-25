@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:44:12 by mlemoula         ###   ########.fr       */
+/*   Created: 2024/11/27 14:25:34 by mlemoula          #+#    #+#             */
+/*   Updated: 2025/02/25 02:40:18 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+Adds the node ’new’ at the beginning of the list.
+- lst: The address of a pointer to the first link of a list.
+- new: The address of a pointer to the node to be added to the list.
+*/
+
 #include "push_swap.h"
 
-void	sa(t_list *a);
-void	sb(t_list *b);
-void	ss(t_list *a, t_list *b);
-void	pa(t_list *a, t_list *b);
-void	pb(t_list *a, t_list *b);
-void	ra(t_list *a);
-void	rb(t_list *b);
-void	rr(t_list *a, t_list *b);
-void	rra(t_list *a);
-void	rrb(t_list *b);
-void	rrr(t_list *a, t_list *b);
+void	ft_lstadd_front(t_node **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	(*new).next = *lst;
+	*lst = new;
+}

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:44:12 by mlemoula         ###   ########.fr       */
+/*   Created: 2024/11/25 18:49:55 by mlemoula          #+#    #+#             */
+/*   Updated: 2025/02/25 02:29:47 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+Allocates (with malloc(3)) and returns a new node.
+The member variable ’content’ is initialized with the value of the parameter ’content’.
+The variable ’next’ is initialized to NULL.
+*/
+
 #include "push_swap.h"
 
-void	sa(t_list *a);
-void	sb(t_list *b);
-void	ss(t_list *a, t_list *b);
-void	pa(t_list *a, t_list *b);
-void	pb(t_list *a, t_list *b);
-void	ra(t_list *a);
-void	rb(t_list *b);
-void	rr(t_list *a, t_list *b);
-void	rra(t_list *a);
-void	rrb(t_list *b);
-void	rrr(t_list *a, t_list *b);
+t_node	*ft_lstnew(void *content)
+{
+	struct s_node	*member;
+
+	member = malloc(sizeof(struct s_node));
+	if (!member)
+		return (NULL);
+	(*member).next = NULL;
+	(*member).value = content;
+	return (member);
+}

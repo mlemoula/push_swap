@@ -6,11 +6,12 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/24 22:09:50 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/25 02:10:41 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
+#include "push_swap.h"
 ///Pour buildin
 #include <unistd.h>
 ///
@@ -28,7 +29,7 @@ int	main(int argc, char **argv)
 	{
 		n = ft_atoi((const char *)argv[i]);
 		if (!(n >= -2147483648 && n <= 2147483647))
-			return (write(1, "not int", 7), 0);
+			return (write(1, "exit l31", 8), 0);
 		j = 1;
 		while (j < i)
 		{
@@ -38,6 +39,6 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	// ft_putswap(*argv);
-	return (write (1, "ok", 2), 0);
+	ft_push_swap(argv, argc);
+	return (write (1, "exit l42", 8), 0);
 }
