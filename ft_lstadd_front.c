@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:25:34 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:40:18 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/25 03:08:33 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Adds the node ’new’ at the beginning of the list.
 
 #include "push_swap.h"
 
-void	ft_lstadd_front(t_node **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!lst || !new)
 		return ;
