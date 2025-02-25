@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:49:55 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:29:47 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/25 03:06:34 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ The variable ’next’ is initialized to NULL.
 
 #include "push_swap.h"
 
-t_node	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	struct s_node	*member;
+	t_list	*member;
 
-	member = malloc(sizeof(struct s_node));
+	member = malloc(sizeof(struct s_list));
 	if (!member)
 		return (NULL);
 	(*member).next = NULL;
