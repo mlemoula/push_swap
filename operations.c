@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/27 00:26:14 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/27 00:31:04 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ void	pb(t_list **a, t_list **b)
 
 void	ra(t_list **a)
 {
+	t_list	*last;
 	t_list	*tmp;
 	if (*a && (*a)->next)
 	{
-		tmp = (*a)->next;
-		ft_lstadd_front(a, ft_lstlast(a);
-		*a = tmp;
+		last = ft_lstlast(*a);
+		tmp = *a;
+		(*a) = last;
+		(*a)->next = tmp;
 	}	
 }
 
