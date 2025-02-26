@@ -6,26 +6,25 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:41:47 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/25 23:33:53 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stddef.h>
+void	sa(t_list *a);
+void	sb(t_list *b);
+void	ss(t_list *a, t_list *b);
+void	pa(t_list *a, t_list *b);
+void	pb(t_list *a, t_list *b);
+void	ra(t_list *a);
+void	rb(t_list *b);
+void	rr(t_list *a, t_list *b);
+void	rra(t_list *a);
+void	rrb(t_list *b);
+void	rrr(t_list *a, t_list *b);
 
-typedef struct s_list
-{
-	int				value;
-	struct s_list	*next;
-}					t_list;
-
-// typedef struct s_stack
-// {
-// 	t_list	*top;
-// }			t_stack;
-
-void	ft_push_swap(char **argv, int n);
+void	ft_push_stack(char **argv, int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/25 02:10:41 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:36:52 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	ft_push_swap(argv, argc);
+	ft_push_stack(argv, argc);
 	return (write (1, "exit l42", 8), 0);
 }

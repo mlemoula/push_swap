@@ -5,7 +5,8 @@ RM				=	rm -f
 MAKEFILE_LIBFT	=	./libft/
 LIBFT_PATH		=	./libft/libft.a
 
-SRCS			=	./main.c
+SRCS			=	./main.c \
+					./push_swap.c
 
 OBJS			=	$(SRCS:.c=.o)
 
