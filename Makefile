@@ -6,7 +6,8 @@ MAKEFILE_LIBFT	=	./libft/
 LIBFT_PATH		=	./libft/libft.a
 
 SRCS			=	./main.c \
-					./push_swap.c
+					./push_swap.c \
+					./operations.c
 
 OBJS			=	$(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/27 00:31:04 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/27 01:13:24 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,62 @@ void	pb(t_list **a, t_list **b)
 
 void	ra(t_list **a)
 {
+	t_list	*second;
+
+	second = (*a)->next;
+	(*a)->next = NULL;
+	ft_lstadd_back(a, *a);
+	*a = second;
+}
+
+void	rb(t_list **b)
+{
+	t_list	*second;
+
+	second = (*b)->next;
+	(*b)->next = NULL;
+	ft_lstadd_back(b, *b);
+	*b = second;
+}
+
+void	rr(t_list **a, t_list **b)
+{
+	ra(a);
+	rb(b);
+}
+
+void	rra(t_list **a)
+{
 	t_list	*last;
-	t_list	*tmp;
+	t_list	*ante_last;
 	if (*a && (*a)->next)
 	{
 		last = ft_lstlast(*a);
-		tmp = *a;
-		(*a) = last;
-		(*a)->next = tmp;
+		ante_last = *a;
+		while (ante_last->next != last)
+			ante_last = ante_last->next;
+		ft_lstadd_front(a, last);
+		ante_last->next = NULL;
 	}	
 }
 
+void	rrb(t_list **b)
+{
+	t_list	*last;
+	t_list	*ante_last;
+	if (*b && (*b)->next)
+	{
+		last = ft_lstlast(*b);
+		ante_last = *b;
+		while (ante_last->next != last)
+			ante_last = ante_last->next;
+		ft_lstadd_front(b, last);
+		ante_last->next = NULL;
+	}	
+}
 
-
-void	rb(t_list *b);
-void	rr(t_list *a, t_list *b);
-void	rra(t_list *a);
-void	rrb(t_list *b);
-void	rrr(t_list *a, t_list *b);
+void	rrr(t_list **a, t_list **b)
+{
+	rra(a);
+	rrb(b);
+}
