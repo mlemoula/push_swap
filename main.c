@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/27 11:57:44 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/02/28 03:33:55 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	n;
+	t_list	*a;
+	t_list	*b;
 
-	if (argc < 2)
-		return (0);
-	i = 1;
-	while (i < argc)
+	a = NULL;
+	b = NULL;
+	if (argc == 1 || (argc == 2 && !(argv[1][0])))
+		return (1);
+	else if (argc == 2)
 	{
-		n = ft_atoi((const char *)argv[i]);
-		if (!(n >= -2147483648 && n <= 2147483647))
-			return (write(1, "exit l31", 8), 0);
-		j = 1;
-		while (j < i)
-		{
-			if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[j])))
-				return (0);
-			j++;
-		}
-		i++;
+		argv = ft_split(*(argv + 1), ' ');
+		while (argv[argc])
+			argc++;
 	}
-	stack_list(argv, argc);
-	return (write (1, "exit l42", 8), 0);
+	if (check_param(argc, argv) == 0)
+	{
+		if (argc == 2)
+			free(argv);
+		return (1);
+	}
+	stack_list(argv, argc, &a);
+	push_swap(&a, &b);
+	free_stack(&a);
+	return (0);
 }

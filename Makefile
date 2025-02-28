@@ -8,6 +8,7 @@ LIBFT_PATH		=	./libft/libft.a
 SRCS			=	./main.c \
 					./parse_stack.c \
 					./operations.c \
+					./clean.c \
 					./algo_tri_v1.c
 
 OBJS			=	$(SRCS:.c=.o)
@@ -15,11 +16,13 @@ OBJS			=	$(SRCS:.c=.o)
 all:			$(NAME)
 
 $(NAME):		$(OBJS) $(LIBFT_PATH)
-				cp $(LIBFT_PATH) $(NAME)
-				ar -rc $(NAME) $(OBJS)
+				$(CC) $(OBJS) -o $(NAME) -L./libft -lft
 
 $(LIBFT_PATH):	
 				make -C $(MAKEFILE_LIBFT)
+
+%.o: %.c
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:			
 				make clean -C $(MAKEFILE_LIBFT)
