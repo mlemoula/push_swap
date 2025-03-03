@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/01 17:02:49 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/02 01:33:10 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,34 +104,3 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		pa(stack_a, stack_b);
 	}
 }
-
-// #include <stdio.h>
-// void	print_stack(t_list *stack)
-// {
-// 	while (stack)
-// 	{
-// 		printf("%d\n", stack->content);
-// 		stack = stack->next;
-// 	}
-// }
-
-// void push_swap(t_list **stack_a, t_list **stack_b)
-// {
-// 	printf("stack a début :\n");
-// 	print_stack(*stack_a);
-//     while (*stack_a)
-//     {
-//         pb(stack_a, stack_b);
-//     }
-//     while (*stack_b)
-//     {
-// 		printf("stack a :\n");
-//         print_stack(*stack_a);
-// 		printf("stack b 1 :\n");
-//         print_stack(*stack_b);
-//         max_on_top(stack_b);
-//         pa(stack_a, stack_b);
-// 		printf("stack b :\n");
-//         print_stack(*stack_b); // Debug print
-//     }
-// }

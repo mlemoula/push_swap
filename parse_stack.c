@@ -6,12 +6,15 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/01 16:20:59 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:34:09 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
+
+///to remove
+#include <stdio.h>
 
 int	split_argv(char ***argv)
 {
@@ -41,13 +44,13 @@ int	check_param(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		n = ft_atoi(argv[i]);
+		n = ft_atoi_custom(argv[i]);
 		if (n < INT_MIN || n > INT_MAX)
 			return (0);
 		j = 1;
 		while (j < i)
 		{
-			if (ft_atoi(argv[j]) == n)
+			if (ft_atoi_custom(argv[j]) == n)
 				return (0);
 			j++;
 		}
@@ -67,7 +70,7 @@ int	stack_list(char **argv, int n, t_list **stack_a)
 	error_flag = 0;
 	while (i < n)
 	{
-		value = ft_atoi(argv[i]);
+		value = ft_atoi_custom(argv[i]);
 		new_element = ft_lstnew(value);
 		if (!new_element)
 			error_flag = 1;
@@ -75,6 +78,6 @@ int	stack_list(char **argv, int n, t_list **stack_a)
 		i++;
 	}
 	if (error_flag == 1)
-	return (free_stack(stack_a), 0);
+		return (free_stack(stack_a), 0);
 	return (1);
 }

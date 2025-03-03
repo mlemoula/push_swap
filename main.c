@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/01 16:59:00 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:23:47 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		if(!(split_argv(&argv)))
 			return (write(1, "Error\n", 6), 1);
 	}
-	if (check_param(argc, argv) != 1)
+	if (!check_param(argc, argv))
 		return (write(1, "Error\n", 6), 1);
 	if (!stack_list(argv, argc, &a))
 		return (free (argv), write(1, "Error\n", 6), 1);
