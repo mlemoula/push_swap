@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/01 15:46:05 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:35:24 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
-# include <limits.h>
+# include <unistd.h>
+// # include "stdio.h"
+// # include <limits.h>
 
 void	sa(t_list **a);
 void	sb(t_list **b);

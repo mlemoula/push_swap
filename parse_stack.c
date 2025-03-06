@@ -6,15 +6,12 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/03 18:34:09 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/04 00:27:31 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
-
-///to remove
-#include <stdio.h>
 
 int	split_argv(char ***argv)
 {
@@ -73,7 +70,10 @@ int	stack_list(char **argv, int n, t_list **stack_a)
 		value = ft_atoi_custom(argv[i]);
 		new_element = ft_lstnew(value);
 		if (!new_element)
+		{
 			error_flag = 1;
+			break;
+		}
 		ft_lstadd_front(stack_a, new_element);
 		i++;
 	}

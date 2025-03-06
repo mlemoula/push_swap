@@ -6,11 +6,12 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/01 01:40:09 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:21:14 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
+#include "push_swap.h"
 
 void	sa(t_list **a)
 {
@@ -55,6 +56,7 @@ void	pa(t_list **a, t_list **b)
 		ft_lstadd_front(a, *b);
 		*b = tmp;
 	}
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_list **a, t_list **b)
@@ -66,6 +68,7 @@ void	pb(t_list **a, t_list **b)
 		ft_lstadd_front(b, *a);
 		*a = tmp;
 	}
+	write(1, "pb\n", 3);
 }
 
 void	ra(t_list **a)
@@ -76,6 +79,7 @@ void	ra(t_list **a)
 	(*a)->next = NULL;
 	ft_lstadd_back(a, *a);
 	*a = second;
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_list **b)
@@ -106,7 +110,8 @@ void	rra(t_list **a)
 			ante_last = ante_last->next;
 		ft_lstadd_front(a, last);
 		ante_last->next = NULL;
-	}	
+	}
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_list **b)

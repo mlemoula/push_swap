@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/02 01:33:10 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/04 00:40:59 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		max_on_top(stack_b);
 		pa(stack_a, stack_b);
 	}
+	free_stack(stack_b);
 }
