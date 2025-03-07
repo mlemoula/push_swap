@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/03 23:35:24 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:15:30 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		check_param(int argc, char **argv);
 int		stack_list(char **argv, int n, t_list **stack_a);
 void	push_swap(t_list **stack_a, t_list **stack_b);
 void	free_stack(t_list **stack);
+void	free_split(char **argv, int flag);
 
 #endif

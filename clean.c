@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 01:43:29 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/02/28 01:50:42 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:16:47 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void	free_stack(t_list **stack)
 {
 	t_list	*tmp;
+
+	if (!stack)
+		return ;
 	while (*stack)
 	{
 		tmp = *stack;
@@ -22,4 +25,19 @@ void	free_stack(t_list **stack)
 		free (tmp);
 	}
 	*stack = NULL;
+}
+
+void	free_split(char **argv, int flag)
+{
+	int	i;
+
+	i = 0;
+	if (!argv || !flag)
+		return ;
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
 }
