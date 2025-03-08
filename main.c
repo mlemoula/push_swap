@@ -6,15 +6,18 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/07 18:17:13 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/08 02:16:53 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "push_swap.h"
 
+
+// #include <stdio.h>
 // static void	print_stack(t_list *stack)
 // {
+// printf("stack_a post tri :\n");
 // 	while (stack)
 // 	{
 // 		printf("%d\n", stack->content);
@@ -22,34 +25,26 @@
 // 	}
 // }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
-	int		split_flag;
 
+	// a = malloc(sizeof(t_list));
+	// b = malloc(sizeof(t_list));
 	a = NULL;
 	b = NULL;
-	split_flag = 0;
-	if (argc == 1 || (argc == 2 && !(argv[1][0])))
+	if (argc == 1)
 		return (write(2, "Error\n", 6), 1);
 	else if (argc == 2)
-	{
-		argc = 1 + split_counter(argv[1], ' ');
-		if(!(split_argv(&argv)))
-			return (write(2, "Error\n", 6), 1);
-		split_flag = 1;
-	}
+		argv = ft_split(argv[1], ' ');
 	if (!check_param(argc, argv))
-		return (write(2, "Error\n", 6), free_split(argv, split_flag), 1);
+		return (write(2, "Error\n", 6), 1);
 	if (!stack_list(argv, argc, &a))
-		return (write(2, "Error\n", 6), free_split(argv, split_flag), 1);
-	// printf("stack_a pré tri :\n");
-	// print_stack(a);
+	//stack_a est cleanée dans stack_list si pb d'allocation
+		return (write(2, "Error\n", 6), 1);
 	push_swap(&a, &b);
-	// printf("stack_a post tri :\n");
 	// print_stack(a);
 	free_stack(&a);
-	free_split(argv, split_flag);
 	return (0);
 }
