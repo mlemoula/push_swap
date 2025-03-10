@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/07 23:02:19 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/10 00:58:34 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 	
 // }
 
+
 int	get_max_index(t_list *stack)
 {
 	int	i;
@@ -94,8 +95,13 @@ void	max_on_top(t_list **stack)
 	
 }
 
-void	push_swap(t_list **stack_a, t_list **stack_b)
+void	push_swap(t_stacks *stacks)
 {
+	t_list	**stack_a;
+	t_list	**stack_b;
+
+	stack_a = &stacks->stack_a;
+	stack_b = &stacks->stack_b;
 	while (*stack_a)
 		pb(stack_a, stack_b);
 	while (*stack_b)
@@ -103,5 +109,4 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		max_on_top(stack_b);
 		pa(stack_a, stack_b);
 	}
-	free_stack(stack_b);
 }

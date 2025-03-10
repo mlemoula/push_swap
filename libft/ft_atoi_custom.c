@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:22:30 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/03 18:40:22 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/10 00:04:49 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ static int	signe(const char *nptr)
 	{
 		if (*nptr == '-')
 			s = -1;
-		else
-			s = 1;
-		nptr++;
 	}
 	return (s);
 }
@@ -37,11 +34,11 @@ long	ft_atoi_custom(const char *nptr)
 	s = signe(nptr);
 	if (*nptr == '+' || *nptr == '-')
 		nptr++;
-	if (*nptr > '9' || *nptr < '0')
+	if (*nptr < '0' || *nptr > '9')
 		return ((long)(INT_MIN) - 1);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		n = 10 * n + *nptr - '0';
+		n = 10 * n + (*nptr - '0');
 		nptr++;
 	}
 	if (*nptr != '\0')
