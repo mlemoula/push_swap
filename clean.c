@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 01:43:29 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/10 01:09:46 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/10 20:01:05 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_stacks(t_stacks *stacks)
 		stack = tmp;
 	}
 	stacks->stack_b = NULL;
+	// free(stacks);
 }
 
 void	free_split(char **argv, int flag)
@@ -56,6 +57,14 @@ void	error(t_stacks *stacks, char **argv, int split_flag)
 	if (split_flag)
 		free_split(argv, split_flag);
 	if (stacks)
-		free(stacks);
+		free_stacks(stacks);
 	write(2, "Error\n", 6);
+}
+
+void	clean_exit(t_stacks *stacks, char **argv, int split_flag)
+{
+	if (split_flag)
+		free_split(argv, split_flag);
+	if (stacks)
+		free_stacks(stacks);
 }

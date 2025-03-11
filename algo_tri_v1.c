@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/10 00:58:34 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/11 04:15:32 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@
 	
 // }
 
-
 int	get_max_index(t_list *stack)
 {
 	int	i;
@@ -81,21 +80,23 @@ int	get_max_index(t_list *stack)
 void	max_on_top(t_list **stack)
 {
 	int	n;
+	int stack_size;
 
 	n = get_max_index(*stack);
+	stack_size = ft_lstsize(*stack);
 	if	(n > 0)
 	{
-		if (n < (ft_lstsize(*stack) - 1)/2)
+		if (n < (stack_size - 1)/2)
 			while (n -- > 0)
 				ra(stack);
 		else
-			while (n++ < ft_lstsize(*stack))
+			while (n++ < stack_size)
 				rra(stack);
 	}
 	
 }
 
-void	push_swap(t_stacks *stacks)
+void	big_sort(t_stacks *stacks)
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
@@ -109,4 +110,44 @@ void	push_swap(t_stacks *stacks)
 		max_on_top(stack_b);
 		pa(stack_a, stack_b);
 	}
+}
+
+void	small_sort(t_list **stack_a, int stack_size)
+{
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		sa(stack_a);
+	if (stack_size == 3)
+	{
+		if ((*stack_a)->next->content > (*stack_a)->next->next->content)
+		{
+			if ((*stack_a)->next->next->content < (*stack_a)->next->content)
+				rra(stack_a);
+			if ((*stack_a)->next->content < (*stack_a)->content)
+				sa(stack_a);
+		}
+	}
+}
+
+void sort(t_stacks *stacks)
+{
+	t_list	**stack_a;
+	t_list	**stack_b;
+	int 	stack_size;
+
+	stack_a = &stacks->stack_a;
+	stack_b = &stacks->stack_b;
+	stack_size = ft_lstsize(*stack_a);
+
+	if (stack_size == 2 || stack_size == 3)
+		small_sort(stack_a, stack_size);
+	else if (stack_size == 4)
+	{
+		max_on_top(stack_a);
+		pb(stack_a, stack_b);
+		small_sort(stack_a, stack_size - 1);
+		pa(stack_a, stack_b);
+		ra(stack_a);
+		}
+	else
+		big_sort(stacks);
 }

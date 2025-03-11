@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/10 01:07:39 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:09:50 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ typedef struct s_stacks {
 	t_list	*stack_b;
 } t_stacks;
 
-int		split_argv(char ***argv, int *flag, int argc);
 int		check_param(int argc, char **argv);
 int		stack_list(char **argv, int n, t_list **stack_a);
-void	push_swap(t_stacks *stacks);
+void	sort(t_stacks *stacks);
 void	free_stacks(t_stacks *stacks);
 void	free_split(char **argv, int flag);
 void	error(t_stacks *stacks, char **argv, int split_flag);
+void	clean_exit(t_stacks *stacks, char **argv, int split_flag);
+int		is_sorted(char **argv, int split_flag);
 
 // pour tests
 # include <stdio.h>
 void	print_stack(t_stacks stacks);
+// int		split_argv(char ***argv, int *flag, int argc);
 ///
 
 #endif

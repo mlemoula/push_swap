@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/10 01:24:07 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/11 04:09:51 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,19 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv)
+			return (error(NULL, argv, split_flag), 1);
 		split_flag = 1;
 	}
 	if (!check_param(argc, argv))
 		return (error(NULL, argv, split_flag), 1);
-	if (!stack_list(argv, argc, &stacks.stack_a))
-		return (error(&stacks, argv, split_flag), 1);
-	push_swap(&stacks);
+	if (!is_sorted(argv, split_flag))
+	{
+		if (!stack_list(argv, argc, &stacks.stack_a))
+			return (error(&stacks, argv, split_flag), 1);
+		sort(&stacks);
+	}
 	// print_stack(stacks);
-	free_stacks(&stacks);
+	clean_exit(&stacks, argv, split_flag);
 	return (0);
 }
