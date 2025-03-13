@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 02:06:04 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:48:58 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,16 +120,19 @@ void	rb(t_list **b)
 
 void	rr(t_list **a, t_list **b)
 {
+	t_list	*first;
 	t_list	*second;
 
+	first = *a;
 	second = (*a)->next;
-	(*a)->next = NULL;
-	ft_lstadd_back(a, *a);
 	*a = second;
-	second = (*b)->next;
-	(*b)->next = NULL;
-	ft_lstadd_back(b, *b);
+	first->next = NULL;
+	ft_lstadd_back(a, first);
+	first = *b;
+	second = first->next;
 	*b = second;
+	first->next = NULL;
+	ft_lstadd_back(b, first);
 	write(1, "rr\n", 3);
 }
 

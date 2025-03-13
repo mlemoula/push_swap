@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 01:47:54 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:58:34 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	free_stacks(t_stacks *stacks);
 void	free_split(char **argv, int flag);
 void	error(t_stacks *stacks, char **argv, int split_flag);
 void	clean_exit(t_stacks *stacks, char **argv, int split_flag);
+void	big_sort(t_stacks *stacks);
+void	small_sort(t_list **stack_a, int stack_size);
+// int		get_max_index(t_list *stack);
+// int		get_min_index(t_list *stack);
+void	min_on_top(t_list **stack);
 int		is_sorted(char **argv, int split_flag);
 
 // pour tests

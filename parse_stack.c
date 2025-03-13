@@ -6,12 +6,12 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/12 13:42:57 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:25:22 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "./libft/libft.h"
+// #include "./libft/libft.h"
 
 int	check_param(int argc, char **argv)
 {

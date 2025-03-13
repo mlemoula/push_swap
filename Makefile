@@ -9,7 +9,8 @@ SRCS			=	./main.c \
 					./parse_stack.c \
 					./operations.c \
 					./clean.c \
-					./algo_tri_v1.c
+					./algo_tri_v1.c \
+					./big_sort.c
 
 OBJS			=	$(SRCS:.c=.o)
 

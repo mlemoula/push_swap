@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 01:55:23 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:44:09 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,22 @@ void	max_on_top(t_list **stack)
 	
 }
 
-void	big_sort(t_stacks *stacks)
-{
-	t_list	**stack_a;
-	t_list	**stack_b;
+// void	big_sort_v1(t_stacks *stacks)
+// {
+// 	t_list	**stack_a;
+// 	t_list	**stack_b;
 
-	stack_a = &stacks->stack_a;
-	stack_b = &stacks->stack_b;
-	while (*stack_a)
-		pb(stack_a, stack_b);
-	while (*stack_b)
-	{
-		max_on_top(stack_b);
-		pa(stack_a, stack_b);
-	}
-}
+// 	stack_a = &stacks->stack_a;
+// 	stack_b = &stacks->stack_b;
+// 	while (*stack_a)
+// 		pb(stack_a, stack_b);
+// 	while (*stack_b)
+// 	{
+// 		max_on_top(stack_b);
+// 		pa(stack_a, stack_b);
+// 	}
+// }
+
 
 void	small_sort(t_list **stack_a, int stack_size)
 {
@@ -140,17 +141,25 @@ void sort(t_stacks *stacks)
 	stack_size = ft_lstsize(*stack_a);
 
 	if (stack_size == 2 || stack_size == 3)
-		small_sort(stack_a, stack_size);
-	else if (stack_size == 4)
 	{
-		// print_stack(*stacks);
+		small_sort(stack_a, stack_size);
+		return ;
+	}
+	else if (stack_size == 4 || stack_size == 5)
+	{
 		min_on_top(stack_a);		
 		pb(stack_a, stack_b);
-		// print_stack(*stacks);
-		small_sort(stack_a, ft_lstsize(*stack_a));
+		sort(stacks);
 		pa(stack_a, stack_b);
-		// print_stack(*stacks);
 	}
+	// else if (stack_size == 5)
+	// {
+	// 	min_on_top(stack_a);		
+	// 	pb(stack_a, stack_b);
+	// 	sort(stacks);
+	// 	pa(stack_a, stack_b);
+	// }
 	else
 		big_sort(stacks);
+	// print_stack(*stacks);
 }
