@@ -6,36 +6,12 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/11 02:20:04 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:42:57 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./libft/libft.h"
-
-// int	split_argv(char ***argv, int *flag, int argc)
-// {
-// 	int		i;
-// 	char	**tmp;
-
-// 	i = 0;
-// 	tmp = ft_split((*argv)[1], ' ');
-// 	if (!tmp)
-// 		return (0);
-// 	if (argc > 500)
-// 	{
-// 		*argv = malloc(sizeof(char **));
-// 		*flag = 1;
-// 	}
-// 	while (tmp[i])
-// 	{
-// 		(*argv)[i + 1] = tmp[i];
-// 		i++;
-// 	}
-// 	(*argv)[i + 1] = NULL;
-// 	free(tmp);
-// 	return (1);
-// }
 
 int	check_param(int argc, char **argv)
 {

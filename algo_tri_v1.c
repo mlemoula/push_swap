@@ -6,52 +6,53 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/11 04:15:32 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 01:55:23 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	get_min_index(t_list *stack)
-// {
-// 	int	i;
-// 	int	min_sofar;
-// 	int	index_min_sofar;
+int	get_min_index(t_list *stack)
+{
+	int	i;
+	int	min_sofar;
+	int	index_min_sofar;
 
-// 	i = 0;
-// 	index_min_sofar = 0;
-// 	if (!stack)
-// 		return (-1);
-// 	min_sofar = stack->content;
-// 	while (stack->next)
-// 	{
-// 		stack = stack->next;
-// 		i++;
-// 		if (stack->content < min_sofar)
-// 		{
-// 			min_sofar = stack->content;
-// 			index_min_sofar = i;
-// 		}
-// 	}
-// 	return (index_min_sofar);
-// }
+	i = 0;
+	index_min_sofar = 0;
+	if (!stack)
+		return (-1);
+	min_sofar = stack->content;
+	while (stack->next)
+	{
+		stack = stack->next;
+		i++;
+		if (stack->content < min_sofar)
+		{
+			min_sofar = stack->content;
+			index_min_sofar = i;
+		}
+	}
+	return (index_min_sofar);
+}
 
-// void	min_on_top(t_list **stack)
-// {
-// 	int	n;
+void	min_on_top(t_list **stack)
+{
+	int	n;
+	int stack_size;
 
-// 	n = get_min_index(*stack);
-// 	if	(n > 0)
-// 	{
-// 		if (n <= (ft_lstsize(*stack) - 1)/2)
-// 			while (n -- > 0)
-// 				ra(stack);
-// 		else
-// 			while (n++ < ft_lstsize(*stack))
-// 				rra(stack);
-// 	}
-	
-// }
+	n = get_min_index(*stack);
+	stack_size = ft_lstsize(*stack);
+	if	(n > 0)
+	{
+		if (n <= (stack_size - 1)/2)
+			while (n -- > 0)
+				ra(stack);
+		else
+			while (n++ < stack_size)
+				rra(stack);
+	}
+}
 
 int	get_max_index(t_list *stack)
 {
@@ -142,12 +143,14 @@ void sort(t_stacks *stacks)
 		small_sort(stack_a, stack_size);
 	else if (stack_size == 4)
 	{
-		max_on_top(stack_a);
+		// print_stack(*stacks);
+		min_on_top(stack_a);		
 		pb(stack_a, stack_b);
-		small_sort(stack_a, stack_size - 1);
+		// print_stack(*stacks);
+		small_sort(stack_a, ft_lstsize(*stack_a));
 		pa(stack_a, stack_b);
-		ra(stack_a);
-		}
+		// print_stack(*stacks);
+	}
 	else
 		big_sort(stacks);
 }

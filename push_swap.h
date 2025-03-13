@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/11 01:09:50 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 01:47:54 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		is_sorted(char **argv, int split_flag);
 // pour tests
 # include <stdio.h>
 void	print_stack(t_stacks stacks);
+void	print_list(t_list *stack);
 // int		split_argv(char ***argv, int *flag, int argc);
 ///
 

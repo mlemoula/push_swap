@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/11 04:07:30 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/13 02:06:04 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ss(t_list **a, t_list **b)
 void	pa(t_list **a, t_list **b)
 {
 	t_list	*tmp;
+
 	if (*b)
 	{
 		tmp = (*b)->next;
@@ -81,6 +82,7 @@ void	pa(t_list **a, t_list **b)
 void	pb(t_list **a, t_list **b)
 {
 	t_list	*tmp;
+
 	if (*a)
 	{
 		tmp = (*a)->next;
@@ -92,23 +94,27 @@ void	pb(t_list **a, t_list **b)
 
 void	ra(t_list **a)
 {
+	t_list	*first;
 	t_list	*second;
 
+	first = *a;
 	second = (*a)->next;
-	(*a)->next = NULL;
-	ft_lstadd_back(a, *a);
 	*a = second;
+	first->next = NULL;
+	ft_lstadd_back(a, first);
 	write(1, "ra\n", 3);
 }
 
 void	rb(t_list **b)
 {
+	t_list	*first;
 	t_list	*second;
 
-	second = (*b)->next;
-	(*b)->next = NULL;
-	ft_lstadd_back(b, *b);
+	first = *b;
+	second = first->next;
 	*b = second;
+	first->next = NULL;
+	ft_lstadd_back(b, first);
 	write(1, "rb\n", 3);
 }
 
