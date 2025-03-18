@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 15:44:09 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:48:01 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,49 +52,6 @@ void	min_on_top(t_list **stack)
 			while (n++ < stack_size)
 				rra(stack);
 	}
-}
-
-int	get_max_index(t_list *stack)
-{
-	int	i;
-	int	max_sofar;
-	int	index_max_sofar;
-
-	i = 0;
-	index_max_sofar = 0;
-	if (!stack)
-		return (-1);
-	max_sofar = stack->content;
-	while (stack->next)
-	{
-		stack = stack->next;
-		i++;
-		if (stack->content > max_sofar)
-		{
-			max_sofar = stack->content;
-			index_max_sofar = i;
-		}
-	}
-	return (index_max_sofar);
-}
-
-void	max_on_top(t_list **stack)
-{
-	int	n;
-	int stack_size;
-
-	n = get_max_index(*stack);
-	stack_size = ft_lstsize(*stack);
-	if	(n > 0)
-	{
-		if (n < (stack_size - 1)/2)
-			while (n -- > 0)
-				ra(stack);
-		else
-			while (n++ < stack_size)
-				rra(stack);
-	}
-	
 }
 
 // void	big_sort_v1(t_stacks *stacks)
@@ -151,6 +108,7 @@ void sort(t_stacks *stacks)
 		pb(stack_a, stack_b);
 		sort(stacks);
 		pa(stack_a, stack_b);
+		return ;
 	}
 	// else if (stack_size == 5)
 	// {

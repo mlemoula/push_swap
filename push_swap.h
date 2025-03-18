@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 15:58:34 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:48:33 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	big_sort(t_stacks *stacks);
 void	small_sort(t_list **stack_a, int stack_size);
 // int		get_max_index(t_list *stack);
 // int		get_min_index(t_list *stack);
-void	min_on_top(t_list **stack);
+// void	max_on_top(t_list **stack, char stack_letter);
 int		is_sorted(char **argv, int split_flag);
 
 // pour tests

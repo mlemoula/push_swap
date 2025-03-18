@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 16:22:04 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:16:55 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char *argv[])
 			return (error(&stacks, argv, split_flag), 1);
 		sort(&stacks);
 	}
-	print_stack(stacks);
+	// print_stack(stacks);
 	clean_exit(&stacks, argv, split_flag);
 	return (0);
 }
