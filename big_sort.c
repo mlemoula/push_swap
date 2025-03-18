@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/18 11:50:31 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/18 23:23:39 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,31 +49,43 @@ static int	get_max_index(t_list *stack)
 	return (index_max_sofar);
 }
 
-static void	max_on_top(t_list **stack, char stack_letter)
+static void	max_on_top(t_list **stack)
 {
 	int	n;
 	int stack_size;
 
 	n = get_max_index(*stack);
 	stack_size = ft_lstsize(*stack);
-	if	(n > 0 && stack_letter == 'a')
+	// if	(n > 0 && stack_letter == 'a')
+	// {
+	// 	if (n <= (stack_size - 1)/2)
+	// 		while (n -- > 0)
+	// 				ra(stack);
+	// 	else
+	// 		while (n++ < stack_size)
+	// 			rra(stack);
+	// }
+	// else if	(n > 0 && stack_letter == 'b')
+	// {
+	if (n <= (stack_size - 1)/2)
 	{
-		if (n < (stack_size - 1)/2)
-			while (n -- > 0)
-					ra(stack);
-		else
-			while (n++ < stack_size)
-				rra(stack);
+		while (n -- > 0)
+		{
+			rb(stack);
+			if ((*stack)->content < (*stack)->next->content && n > 1)
+				sb(stack);
+		}
 	}
-	else if	(n > 0 && stack_letter == 'b')
+	else
 	{
-		if (n < (stack_size - 1)/2)
-			while (n -- > 0)
-					rb(stack);
-		else
-			while (n++ < stack_size)
-				rrb(stack);
+		while (n++ < stack_size)
+		{
+			rrb(stack);
+			if ((*stack)->content < (*stack)->next->content && n > 1)
+				sb(stack);
+		}
 	}
+	// }
 }
 
 int	get_pivot(t_list *stack)
@@ -103,31 +115,34 @@ void	big_sort(t_stacks *stacks)
 	int		stack_size;
 	int		pivot;
 
-	// printf("pivot : %d\n", pivot);
 	if (stack_is_sorted(stacks->stack_a))
 		return ;
 	stack_size = ft_lstsize(stacks->stack_a);
 	pivot = get_pivot(stacks->stack_a);
-	printf("%d", stack_size);
 	while (stack_size-- > 1)
 	{
 		if (stacks->stack_a->content < pivot)
+		{
+			if (stacks->stack_a->content > stacks->stack_a->next->content)
+				sa(&stacks->stack_a);
+			// else
 			pb(&stacks->stack_a, &stacks->stack_b);
-		else
+		}
+		else if (stack_size > 1 && !stack_is_sorted(stacks->stack_a) && stacks->stack_a->content > pivot)
 			ra(&stacks->stack_a);
+		else
+		//if (stacks->stack_a->content > pivot)
+			break;
+		// if (stacks->stack_b && stacks->stack_b->next && (stacks->stack_b->content > stacks->stack_b->next->content))
+		// 	sb(&stacks->stack_b);
 	}
-	printf("%d", stack_is_sorted(stacks->stack_a));
-	if (!stack_is_sorted(stacks->stack_a))
-	{
-		if (ft_lstsize(stacks->stack_a) > 3)
-			big_sort(stacks);
-		else if (!stack_is_sorted(stacks->stack_a))
-			small_sort(&stacks->stack_a, ft_lstsize(stacks->stack_a));
-	}
+	if (ft_lstsize(stacks->stack_a) > 5 && !stack_is_sorted(stacks->stack_a))
+		big_sort(stacks);
+	else if (!stack_is_sorted(stacks->stack_a))
+		small_sort(&stacks->stack_a, ft_lstsize(stacks->stack_a));
 	while (stacks->stack_b)
 	{
-		max_on_top(&stacks->stack_b, 'b');
+		max_on_top(&stacks->stack_b);
 		pa(&stacks->stack_a, &stacks->stack_b);
 	}
-	// print_stack(*stacks);
 }
