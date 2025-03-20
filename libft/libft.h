@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:47:51 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/11 02:20:39 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:32:54 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <limits.h>
 # include <stdlib.h>
 
-size_t	ft_strlen(const char *s);
+// size_t	ft_strlen(const char *s);
 long	ft_atoi_custom(const char *nptr);
 int		split_counter(char const *s, char c);
 char	**ft_split(char const *s, char c);

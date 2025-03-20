@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 01:43:29 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/10 20:01:05 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:18:40 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	free_stacks(t_stacks *stacks)
 		stack = tmp;
 	}
 	stacks->stack_b = NULL;
-	// free(stacks);
 }
 
 void	free_split(char **argv, int flag)

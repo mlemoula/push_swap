@@ -1,18 +1,19 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 17:23:13 by mlemoula          #+#    #+#             */
-/*   Updated: 2024/11/25 18:06:56 by mlemoula         ###   ########.fr       */
+/*   Created: 2025/03/20 19:47:15 by mlemoula          #+#    #+#             */
+/*   Updated: 2025/03/20 20:39:26 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-Allocates (with malloc(3)) and returns an array of strings obtained by splitting ’s’ using
-the character ’c’ as a delimiter. The array must end with a NULL pointer.
+Allocates (with malloc(3)) and returns an array of strings
+obtained by splitting ’s’ using the character ’c’ as a delimiter.
+The array must end with a NULL pointer.
 */
 
 #include "libft.h"
@@ -86,10 +87,9 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (*s != c && *s)
 		{
-			str_array[j] = ft_custom_strdup(s, c);
+			str_array[j] = ft_custom_strdup(s++, c);
 			if (!str_array[j])
 				return (free_all_str(str_array, j));
-			s++;
 			j++;
 		}
 		while (*s != c && *s)

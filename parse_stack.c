@@ -6,12 +6,11 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 15:25:22 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:19:25 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// #include "./libft/libft.h"
 
 int	check_param(int argc, char **argv)
 {
@@ -22,7 +21,7 @@ int	check_param(int argc, char **argv)
 	i = 1;
 	if (argc == 2)
 		i = 0;
-	if	(!argv[i])
+	if (!argv[i])
 		return (0);
 	while (argv[i])
 	{
@@ -71,7 +70,7 @@ int	is_sorted(char **argv, int split_flag)
 		i = 0;
 	else
 		i = 1;
-	while(argv[i] && argv[i + 1])
+	while (argv[i] && argv[i + 1])
 	{
 		if (ft_atoi_custom(argv[i + 1]) < ft_atoi_custom(argv[i]))
 			return (0);

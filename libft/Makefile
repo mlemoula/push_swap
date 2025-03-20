@@ -2,14 +2,13 @@ CC= 		cc
 
 CFLAGS = 	-Wall -Wextra -Werror
 
-SRCS = 		./ft_atoi_custom.c \
-				./ft_lstadd_front.c \
-				./ft_lstadd_back.c \
-				./ft_lstnew.c \
-				./ft_lstsize.c \
-				./ft_lstlast.c \
-				./ft_split.c \
-				./ft_strlen.c
+SRCS = 		./ft_lstadd_front.c \
+			./ft_lstadd_back.c \
+			./ft_lstnew.c \
+			./ft_lstsize.c \
+			./ft_lstlast.c \
+			./ft_split.c \
+			./ft_strlen.c
 				
 OBJS = 		$(SRCS:.c=.o)
 

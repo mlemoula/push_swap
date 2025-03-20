@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/20 16:03:02 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:12:55 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,25 +130,19 @@ void	big_sort(t_stacks *stacks)
 	{
 		if (stacks->stack_a->content <= pivot)
 		{
-			if (stacks->stack_a && stacks->stack_a->next && stacks->stack_a->content > stacks->stack_a->next->content)
-			// {
+			while (stacks->stack_a->content > stacks->stack_a->next->content)
+			{
 				sa(&stacks->stack_a);
-			// 	pb(&stacks->stack_a, &stacks->stack_b);
-			// 	stack_size--;
-			// }
+				pb(&stacks->stack_a, &stacks->stack_b);
+				loops--;
+			}
 			pb(&stacks->stack_a, &stacks->stack_b);
 		}
 		else if (stacks->stack_a && stacks->stack_a->next)
 			ra(&stacks->stack_a);
 	}
 	if (!stack_is_sorted(stacks->stack_a))
-	{
-		if (ft_lstsize(stacks->stack_a) > 5)
-			big_sort(stacks);
-		else
-			sort(stacks);
-			// small_sort(&stacks->stack_a, ft_lstsize(stacks->stack_a));
-	}
+		sort(stacks);
 	while (stacks->stack_b)
 	{
 		max_on_top(&stacks->stack_b);

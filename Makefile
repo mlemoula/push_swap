@@ -6,11 +6,14 @@ MAKEFILE_LIBFT	=	./libft/
 LIBFT_PATH		=	./libft/libft.a
 
 SRCS			=	./main.c \
+					./ft_atoi_custom.c \
 					./parse_stack.c \
-					./operations.c \
+					./operations_rotate.c \
+					./operations_push_swap.c \
 					./clean.c \
 					./algo_tri_v1.c \
-					./big_sort.c
+					./big_sort.c \
+					./tests.c
 
 OBJS			=	$(SRCS:.c=.o)
 
