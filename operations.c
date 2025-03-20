@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/13 13:48:58 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:57:30 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	ra(t_list **a)
 	t_list	*first;
 	t_list	*second;
 
+	if (!*a || !(*a)->next)
+		return ;
 	first = *a;
 	second = (*a)->next;
 	*a = second;
@@ -110,6 +112,8 @@ void	rb(t_list **b)
 	t_list	*first;
 	t_list	*second;
 
+	if (!*b || !(*b)->next)
+		return ;
 	first = *b;
 	second = first->next;
 	*b = second;
@@ -123,6 +127,8 @@ void	rr(t_list **a, t_list **b)
 	t_list	*first;
 	t_list	*second;
 
+	if (!*a || !(*a)->next || !*b || !(*b)->next)
+		return ;
 	first = *a;
 	second = (*a)->next;
 	*a = second;
@@ -140,15 +146,14 @@ void	rra(t_list **a)
 {
 	t_list	*last;
 	t_list	*ante_last;
-	if (*a && (*a)->next)
-	{
-		last = ft_lstlast(*a);
-		ante_last = *a;
-		while (ante_last->next != last)
-			ante_last = ante_last->next;
-		ft_lstadd_front(a, last);
-		ante_last->next = NULL;
-	}
+	if (!*a || !(*a)->next)
+		return ;
+	last = ft_lstlast(*a);
+	ante_last = *a;
+	while (ante_last->next != last)
+		ante_last = ante_last->next;
+	ft_lstadd_front(a, last);
+	ante_last->next = NULL;
 	write(1, "rra\n", 4);
 }
 
@@ -156,15 +161,14 @@ void	rrb(t_list **b)
 {
 	t_list	*last;
 	t_list	*ante_last;
-	if (*b && (*b)->next)
-	{
-		last = ft_lstlast(*b);
-		ante_last = *b;
-		while (ante_last->next != last)
-			ante_last = ante_last->next;
-		ft_lstadd_front(b, last);
-		ante_last->next = NULL;
-	}
+	if (!*b || !(*b)->next)
+		return ;
+	last = ft_lstlast(*b);
+	ante_last = *b;
+	while (ante_last->next != last)
+		ante_last = ante_last->next;
+	ft_lstadd_front(b, last);
+	ante_last->next = NULL;
 	write(1, "rrb\n", 4);
 }
 
@@ -172,23 +176,19 @@ void	rrr(t_list **a, t_list **b)
 {
 	t_list	*last;
 	t_list	*ante_last;
-	if (*a && (*a)->next)
-	{
-		last = ft_lstlast(*a);
-		ante_last = *a;
-		while (ante_last->next != last)
-			ante_last = ante_last->next;
-		ft_lstadd_front(a, last);
-		ante_last->next = NULL;
-	}
-	if (*b && (*b)->next)
-	{
-		last = ft_lstlast(*b);
-		ante_last = *b;
-		while (ante_last->next != last)
-			ante_last = ante_last->next;
-		ft_lstadd_front(b, last);
-		ante_last->next = NULL;
-	}
+	if (!*a || !(*a)->next || !*b || !(*b)->next)
+		return ;
+	last = ft_lstlast(*a);
+	ante_last = *a;
+	while (ante_last->next != last)
+		ante_last = ante_last->next;
+	ft_lstadd_front(a, last);
+	ante_last->next = NULL;
+	last = ft_lstlast(*b);
+	ante_last = *b;
+	while (ante_last->next != last)
+		ante_last = ante_last->next;
+	ft_lstadd_front(b, last);
+	ante_last->next = NULL;
 	write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/18 14:53:09 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:20:32 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,6 @@ void	min_on_top(t_list **stack)
 	}
 }
 
-// void	big_sort_v1(t_stacks *stacks)
-// {
-// 	t_list	**stack_a;
-// 	t_list	**stack_b;
-
-// 	stack_a = &stacks->stack_a;
-// 	stack_b = &stacks->stack_b;
-// 	while (*stack_a)
-// 		pb(stack_a, stack_b);
-// 	while (*stack_b)
-// 	{
-// 		max_on_top(stack_b);
-// 		pa(stack_a, stack_b);
-// 	}
-// }
-
-
 void	small_sort(t_list **stack_a, int stack_size)
 {
 	if ((*stack_a)->content > (*stack_a)->next->content)
@@ -110,14 +93,6 @@ void sort(t_stacks *stacks)
 		pa(stack_a, stack_b);
 		return ;
 	}
-	// else if (stack_size == 5)
-	// {
-	// 	min_on_top(stack_a);		
-	// 	pb(stack_a, stack_b);
-	// 	sort(stacks);
-	// 	pa(stack_a, stack_b);
-	// }
 	else
 		big_sort(stacks);
-	// print_stack(*stacks);
 }
