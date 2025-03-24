@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/20 19:19:25 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:27:15 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	stack_list(char **argv, int n, t_list **stack_a)
 	return (1);
 }
 
-int	is_sorted(char **argv, int split_flag)
+int	args_are_sorted(char **argv, int split_flag)
 {
 	int	i;
 
@@ -75,6 +75,19 @@ int	is_sorted(char **argv, int split_flag)
 		if (ft_atoi_custom(argv[i + 1]) < ft_atoi_custom(argv[i]))
 			return (0);
 		i++;
+	}
+	return (1);
+}
+
+int	stack_is_sorted(t_list *stack)
+{
+	if (!stack || !(stack->next))
+		return (1);
+	while (stack->next)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
 	}
 	return (1);
 }

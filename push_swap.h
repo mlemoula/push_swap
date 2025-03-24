@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/20 19:41:22 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:20:02 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	sort(t_stacks *stacks);
 void	error(t_stacks *stacks, char **argv, int split_flag);
 void	clean_exit(t_stacks *stacks, char **argv, int split_flag);
 void	big_sort(t_stacks *stacks);
-int		is_sorted(char **argv, int split_flag);
+int		args_are_sorted(char **argv, int split_flag);
+int		stack_is_sorted(t_list *stack);
+int		get_max_index(t_list *stack);
 
 // pour tests
 # include <stdio.h>

@@ -11,7 +11,7 @@ SRCS			=	./main.c \
 					./operations_rotate.c \
 					./operations_push_swap.c \
 					./clean.c \
-					./algo_tri_v1.c \
+					./first_sort.c \
 					./big_sort.c \
 					./tests.c
 

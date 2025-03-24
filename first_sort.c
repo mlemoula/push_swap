@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_tri_v1.c                                      :+:      :+:    :+:   */
+/*   first_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/20 19:44:29 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:23:57 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_min_index(t_list *stack)
+static int	get_min_index(t_list *stack)
 {
 	int	i;
 	int	min_sofar;
@@ -36,7 +36,31 @@ int	get_min_index(t_list *stack)
 	return (index_min_sofar);
 }
 
-void	min_on_top(t_list **stack)
+int	get_max_index(t_list *stack)
+{
+	int	i;
+	int	max_sofar;
+	int	index_max_sofar;
+
+	i = 0;
+	index_max_sofar = 0;
+	if (!stack)
+		return (-1);
+	max_sofar = stack->content;
+	while (stack)
+	{
+		if (stack->content > max_sofar)
+		{
+			max_sofar = stack->content;
+			index_max_sofar = i;
+		}
+		stack = stack->next;
+		i++;
+	}
+	return (index_max_sofar);
+}
+
+static void	min_on_top(t_list **stack)
 {
 	int	n;
 	int	stack_size;
@@ -54,7 +78,7 @@ void	min_on_top(t_list **stack)
 	}
 }
 
-void	small_sort(t_list **stack_a, int stack_size)
+static void	small_sort(t_list **stack_a, int stack_size)
 {
 	if ((*stack_a)->content > (*stack_a)->next->content)
 		sa(stack_a);
