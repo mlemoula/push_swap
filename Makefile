@@ -13,7 +13,7 @@ SRCS			=	./main.c \
 					./clean.c \
 					./first_sort.c \
 					./big_sort.c \
-					./tests.c
+					./print_ope.c
 
 OBJS			=	$(SRCS:.c=.o)
 

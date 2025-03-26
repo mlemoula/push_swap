@@ -6,17 +6,19 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:32:06 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/24 18:27:01 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:09:46 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_list **a)
+void	ra(t_stacks *stacks)
 {
+	t_list	**a;
 	t_list	*first;
 	t_list	*second;
 
+	a = &stacks->stack_a;
 	if (!*a || !(*a)->next)
 		return ;
 	first = *a;
@@ -24,14 +26,16 @@ void	ra(t_list **a)
 	*a = second;
 	first->next = NULL;
 	ft_lstadd_back(a, first);
-	write(1, "ra\n", 3);
+	stock_ope("ra\n", stacks);
 }
 
-void	rb(t_list **b)
+void	rb(t_stacks *stacks)
 {
+	t_list	**b;
 	t_list	*first;
 	t_list	*second;
 
+	b = &stacks->stack_b;
 	if (!*b || !(*b)->next)
 		return ;
 	first = *b;
@@ -39,34 +43,16 @@ void	rb(t_list **b)
 	*b = second;
 	first->next = NULL;
 	ft_lstadd_back(b, first);
-	write(1, "rb\n", 3);
+	stock_ope("rb\n", stacks);
 }
 
-// void	rr(t_list **a, t_list **b)
-// {
-// 	t_list	*first;
-// 	t_list	*second;
-
-// 	if (!*a || !(*a)->next || !*b || !(*b)->next)
-// 		return ;
-// 	first = *a;
-// 	second = (*a)->next;
-// 	*a = second;
-// 	first->next = NULL;
-// 	ft_lstadd_back(a, first);
-// 	first = *b;
-// 	second = first->next;
-// 	*b = second;
-// 	first->next = NULL;
-// 	ft_lstadd_back(b, first);
-// 	write(1, "rr\n", 3);
-// }
-
-void	rra(t_list **a)
+void	rra(t_stacks *stacks)
 {
+	t_list	**a;
 	t_list	*last;
 	t_list	*ante_last;
 
+	a = &stacks->stack_a;
 	if (!*a || !(*a)->next)
 		return ;
 	last = ft_lstlast(*a);
@@ -75,14 +61,16 @@ void	rra(t_list **a)
 		ante_last = ante_last->next;
 	ft_lstadd_front(a, last);
 	ante_last->next = NULL;
-	write(1, "rra\n", 4);
+	stock_ope("rra\n", stacks);
 }
 
-void	rrb(t_list **b)
+void	rrb(t_stacks *stacks)
 {
+	t_list	**b;
 	t_list	*last;
 	t_list	*ante_last;
 
+	b = &stacks->stack_b;
 	if (!*b || !(*b)->next)
 		return ;
 	last = ft_lstlast(*b);
@@ -91,26 +79,5 @@ void	rrb(t_list **b)
 		ante_last = ante_last->next;
 	ft_lstadd_front(b, last);
 	ante_last->next = NULL;
-	write(1, "rrb\n", 4);
+	stock_ope("rrb\n", stacks);
 }
-
-// void	rrr(t_list **a, t_list **b)
-// {
-// 	t_list	*last;
-// 	t_list	*ante_last;
-// 	if (!*a || !(*a)->next || !*b || !(*b)->next)
-// 		return ;
-// 	last = ft_lstlast(*a);
-// 	ante_last = *a;
-// 	while (ante_last->next != last)
-// 		ante_last = ante_last->next;
-// 	ft_lstadd_front(a, last);
-// 	ante_last->next = NULL;
-// 	last = ft_lstlast(*b);
-// 	ante_last = *b;
-// 	while (ante_last->next != last)
-// 		ante_last = ante_last->next;
-// 	ft_lstadd_front(b, last);
-// 	ante_last->next = NULL;
-// 	write(1, "rrr\n", 4);
-// }

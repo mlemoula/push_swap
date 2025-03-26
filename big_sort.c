@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/24 18:22:50 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/25 21:53:56 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,38 @@ static int	is_above_piv(t_list *stack, int pivot)
 		return (0);
 	while (stack)
 	{
-		if (stack->content <= pivot)
+		if (*(int *)stack->content <= pivot)
 			return (0);
 		stack = stack->next;
 	}
 	return (1);
 }
 
-static void	max_on_top(t_list **stack)
+static void	max_on_top(t_stacks *stacks)
 {
-	int	n;
-	int	stack_size;
+	int		n;
+	int		stack_size;
 
-	n = get_max_index(*stack);
-	stack_size = ft_lstsize(*stack);
-	if (!*stack || !(*stack)->next)
+	n = get_max_index(stacks->stack_b);
+	stack_size = ft_lstsize(stacks->stack_b);
+	if (!stacks->stack_b || !(stacks->stack_b)->next)
 		return ;
 	if (n <= (stack_size - 1) / 2)
 	{
-		while (n -- > 0)
+		while (n-- > 0)
 		{
-			rb(stack);
-			if ((*stack)->content < (*stack)->next->content && n > 1)
-				sb(stack);
+			rb(stacks);
+			if (*(int *)(stacks->stack_b->content) < *(int *)(stacks->stack_b->next->content) && n > 1)
+				sb(stacks);
 		}
 	}
 	else
 	{
 		while (n++ < stack_size)
 		{
-			rrb(stack);
-			if ((*stack)->content < (*stack)->next->content && n > 1)
-				sb(stack);
+			rrb(stacks);
+			if (*(int *)(stacks->stack_b->content) < *(int *)(stacks->stack_b->next->content) && n > 1)
+				sb(stacks);
 		}
 	}
 }
@@ -63,15 +63,15 @@ static int	get_pivot(t_list *stack)
 
 	if (!stack)
 		return (0);
-	min = INT_MAX;
-	max = INT_MIN;
 	current = stack;
+	min = *(int *)current->content;
+	max = *(int *)current->content;
 	while (current)
 	{
-		if (current->content > max)
-			max = current->content;
-		if (current->content < min)
-			min = current->content;
+		if (*(int *)current->content > max)
+			max = *(int *)current->content;
+		if (*(int *)current->content < min)
+			min = *(int *)current->content;
 		current = current->next;
 	}
 	pivot = (min + max) / 2;
@@ -87,18 +87,18 @@ static void	divide_by_pivot(t_stacks *stacks)
 	loops = ft_lstsize(stacks->stack_a);
 	while (loops-- && stacks->stack_a && !is_above_piv(stacks->stack_a, pivot))
 	{
-		if (stacks->stack_a->content <= pivot)
+		if (*(int *)stacks->stack_a->content <= pivot)
 		{
-			while (stacks->stack_a->content > stacks->stack_a->next->content)
+			while (*(int *)stacks->stack_a->content > *(int *)stacks->stack_a->next->content)
 			{
-				sa(&stacks->stack_a);
-				pb(&stacks->stack_a, &stacks->stack_b);
+				sa(stacks);
+				pb(stacks);
 				loops--;
 			}
-			pb(&stacks->stack_a, &stacks->stack_b);
+			pb(stacks);
 		}
 		else if (stacks->stack_a && stacks->stack_a->next)
-			ra(&stacks->stack_a);
+			ra(stacks);
 	}
 }
 
@@ -111,7 +111,7 @@ void	big_sort(t_stacks *stacks)
 		sort(stacks);
 	while (stacks->stack_b)
 	{
-		max_on_top(&stacks->stack_b);
-		pa(&stacks->stack_a, &stacks->stack_b);
+		max_on_top(stacks);
+		pa(stacks);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/24 18:27:15 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:16:36 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_param(int argc, char **argv)
 int	stack_list(char **argv, int n, t_list **stack_a)
 {
 	int		i;
-	int		value;
+	int		*value;
 	t_list	*new_element;
 
 	i = 1;
@@ -52,10 +52,16 @@ int	stack_list(char **argv, int n, t_list **stack_a)
 		i = 0;
 	while (argv[i])
 	{
-		value = ft_atoi_custom(argv[i]);
+		value = malloc(sizeof(int));
+		if (!value)
+			return (0);
+		*value = ft_atoi_custom(argv[i]);
 		new_element = ft_lstnew(value);
 		if (!new_element)
+		{
+			free(value);
 			return (0);
+		}
 		ft_lstadd_back(stack_a, new_element);
 		i++;
 	}
@@ -85,7 +91,7 @@ int	stack_is_sorted(t_list *stack)
 		return (1);
 	while (stack->next)
 	{
-		if (stack->content > stack->next->content)
+		if (*(int *)stack->content > *(int *)stack->next->content)
 			return (0);
 		stack = stack->next;
 	}

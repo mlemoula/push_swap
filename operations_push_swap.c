@@ -6,17 +6,19 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 19:25:23 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/24 18:25:42 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:10:06 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list **a)
+void	sa(t_stacks *stacks)
 {
 	t_list	*first;
 	t_list	*second;
+	t_list	**a;
 
+	a = &stacks->stack_a;
 	if (*a && (*a)->next)
 	{
 		first = *a;
@@ -25,14 +27,16 @@ void	sa(t_list **a)
 		second->next = first;
 		*a = second;
 	}
-	write(1, "sa\n", 3);
+	stock_ope("sa\n", stacks);
 }
 
-void	sb(t_list **b)
+void	sb(t_stacks *stacks)
 {
 	t_list	*first;
 	t_list	*second;
+	t_list	**b;
 
+	b = &stacks->stack_b;
 	if (*b && (*b)->next)
 	{
 		first = *b;
@@ -41,54 +45,39 @@ void	sb(t_list **b)
 		second->next = first;
 		*b = second;
 	}
-	write(1, "sb\n", 3);
+	stock_ope("sb\n", stacks);
 }
 
-// void	ss(t_list **a, t_list **b)
-// {
-// 	t_list	*first;
-// 	t_list	*second;
-// 	if (*a && (*a)->next)
-// 	{
-// 		first = *a;
-// 		second = first->next;
-// 		first->next = second->next;
-// 		second->next = first;
-// 		*a = second;
-// 	}
-// 	if (*b && (*b)->next)
-// 	{
-// 		first = *b;
-// 		second = first->next;
-// 		first->next = second->next;
-// 		second->next = first;
-// 		*b = second;
-// 	}
-// 	write(1, "ss\n", 3);
-// }
-
-void	pa(t_list **a, t_list **b)
+void	pa(t_stacks *stacks)
 {
 	t_list	*tmp;
+	t_list	**a;
+	t_list	**b;
 
+	a = &stacks->stack_a;
+	b = &stacks->stack_b;
 	if (*b)
 	{
 		tmp = (*b)->next;
 		ft_lstadd_front(a, *b);
 		*b = tmp;
 	}
-	write(1, "pa\n", 3);
+	stock_ope("pa\n", stacks);
 }
 
-void	pb(t_list **a, t_list **b)
+void	pb(t_stacks *stacks)
 {
 	t_list	*tmp;
+	t_list	**a;
+	t_list	**b;
 
+	a = &stacks->stack_a;
+	b = &stacks->stack_b;
 	if (*a)
 	{
 		tmp = (*a)->next;
 		ft_lstadd_front(b, *a);
 		*a = tmp;
 	}
-	write(1, "pb\n", 3);
+	stock_ope("pb\n", stacks);
 }

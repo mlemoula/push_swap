@@ -6,11 +6,10 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/24 18:24:29 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:08:24 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "./libft/libft.h"
 #include "push_swap.h"
 
 //////test.c à supprimer du makefile
@@ -22,6 +21,7 @@ int	main(int argc, char *argv[])
 
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
+	stacks.operations = NULL;
 	split_flag = 0;
 	if (argc == 1)
 		return (error(NULL, argv, split_flag), 1);
@@ -40,6 +40,5 @@ int	main(int argc, char *argv[])
 			return (error(&stacks, argv, split_flag), 1);
 		sort(&stacks);
 	}
-	clean_exit(&stacks, argv, split_flag);
-	return (0);
+	return (print_list(&stacks), clean_exit(&stacks, argv, split_flag), 0);
 }

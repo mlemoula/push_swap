@@ -6,37 +6,40 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 01:43:29 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/20 19:18:40 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:06:04 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "push_swap.h"
 
-void	free_stacks(t_stacks *stacks)
+static void	free_list(t_list **stack, int flag)
 {
-	t_list	*stack;
-	t_list	*tmp;
+	t_list	*current;
+	t_list	*next;
 
-	stack = stacks->stack_a;
-	while (stack)
+	current = *stack;
+	while (current)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		next = current->next;
+		if (flag && current->content)
+			free(current->content);
+		free(current);
+		current = next;
 	}
-	stacks->stack_a = NULL;
-	stack = stacks->stack_b;
-	while (stack)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-	}
-	stacks->stack_b = NULL;
+	*stack = NULL;
 }
 
-void	free_split(char **argv, int flag)
+static void	free_stacks(t_stacks *stacks)
+{
+	free_list(&stacks->stack_a, 1);
+	stacks->stack_a = NULL;
+	free_list(&stacks->stack_b, 1);
+	stacks->stack_b = NULL;
+	free_list(&stacks->operations, 0);
+	stacks->operations = NULL;
+}
+
+static void	free_split(char **argv, int flag)
 {
 	int	i;
 
