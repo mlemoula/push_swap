@@ -1,7 +1,8 @@
 #include "push_swap.h"
+#include <strings.h>
 
 ///tests
-void	print_stack(t_stacks stacks)
+void	print_stacks(t_stacks stacks)
 {
 printf("stack_a :\n");
 t_list *tmp = NULL;
@@ -9,7 +10,7 @@ t_list *tmp = NULL;
 		tmp = stacks.stack_a;
 	while (tmp)
 	{
-		printf("%d\n", tmp->content);
+		printf("%d\n", *(int *)tmp->content);
 		tmp = tmp->next;
 	}
 	printf("stack_b :\n");
@@ -17,24 +18,32 @@ t_list *tmp = NULL;
 	tmp = stacks.stack_b;
 	while (tmp)
 	{
-		printf("%d\n", tmp->content);
+		printf("%d\n", *(int *)tmp->content);
+		tmp = tmp->next;
+	}
+	printf("operations :\n");
+	if (stacks.operations)
+	tmp = stacks.operations;
+	while (tmp)
+	{
+		printf("%s\n", (char *)tmp->content);
 		tmp = tmp->next;
 	}
 }
 ///////
 
-void	print_list(t_list *stack)
-{
-printf("stack_a :\n");
-t_list *tmp = NULL;
-	if (stack)
-		tmp = stack;
-	while (tmp)
-	{
-		printf("%d\n", tmp->content);
-		tmp = tmp->next;
-	}
-}
-///
+// void	print_list(t_list *stack)
+// {
+// 	t_list	*tmp;
 
+// 	tmp = NULL;
+
+// 	if (stack)
+// 		tmp = stack;
+// 	while (tmp)
+// 	{
+// 		// printf("hello %s", (char *)tmp->content);
+// 		tmp = tmp->next;
+// 	}
+// }
 
