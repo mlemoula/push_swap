@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/26 10:40:59 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/26 23:10:10 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int		check_param(int argc, char **argv);
 long	ft_atoi_custom(const char *nptr);
 int		stack_list(char **argv, int n, t_list **stack_a);
 void	sort(t_stacks *stacks);
-void	error(t_stacks *stacks, char **argv, int split_flag);
-void	clean_exit(t_stacks *stacks, char **argv, int split_flag);
+void	clean_ext(t_stacks *stacks, char **argv, int split_flag, int err_flag);
 void	big_sort(t_stacks *stacks);
 int		args_are_sorted(char **argv, int split_flag);
 int		stack_is_sorted(t_list *stack);
