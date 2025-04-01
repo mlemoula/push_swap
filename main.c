@@ -6,13 +6,11 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:54:56 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/26 23:10:06 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/03/30 17:21:16 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//////test.c à supprimer du makefile
 
 int	main(int argc, char *argv[])
 {

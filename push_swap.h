@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:00:05 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/26 23:10:10 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:20:16 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ int		args_are_sorted(char **argv, int split_flag);
 int		stack_is_sorted(t_list *stack);
 int		get_max_index(t_list *stack);
 void	stock_ope(char *ope_name, t_stacks *stacks);
-
-// // pour tests
-# include <stdio.h>
-// void	print_stacks(t_stacks stacks);
 void	print_list(t_stacks *stacks);
-// ///
 
 #endif

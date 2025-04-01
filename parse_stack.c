@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 01:57:39 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/26 10:16:36 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:18:53 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,14 @@ int	stack_is_sorted(t_list *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	stock_ope(char *ope_name, t_stacks *stacks)
+{
+	t_list	*new_element;
+
+	new_element = ft_lstnew(ope_name);
+	if (!new_element)
+		return ;
+	ft_lstadd_back(&stacks->operations, new_element);
 }

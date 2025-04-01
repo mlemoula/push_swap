@@ -6,13 +6,13 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/03/25 21:53:56 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/01 02:52:20 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_above_piv(t_list *stack, int pivot)
+static int	above_piv(t_list *stack, int pivot)
 {
 	if (!stack)
 		return (0);
@@ -27,30 +27,24 @@ static int	is_above_piv(t_list *stack, int pivot)
 
 static void	max_on_top(t_stacks *stacks)
 {
-	int		n;
-	int		stack_size;
+	int	n;
+	int	size;
 
-	n = get_max_index(stacks->stack_b);
-	stack_size = ft_lstsize(stacks->stack_b);
 	if (!stacks->stack_b || !(stacks->stack_b)->next)
 		return ;
-	if (n <= (stack_size - 1) / 2)
+	n = get_max_index(stacks->stack_b);
+	size = ft_lstsize(stacks->stack_b);
+	if (n == 0)
+		return ;
+	if (n <= (size - 1) / 2)
 	{
 		while (n-- > 0)
-		{
 			rb(stacks);
-			if (*(int *)(stacks->stack_b->content) < *(int *)(stacks->stack_b->next->content) && n > 1)
-				sb(stacks);
-		}
 	}
 	else
 	{
-		while (n++ < stack_size)
-		{
+		while (n++ < size)
 			rrb(stacks);
-			if (*(int *)(stacks->stack_b->content) < *(int *)(stacks->stack_b->next->content) && n > 1)
-				sb(stacks);
-		}
 	}
 }
 
@@ -64,6 +58,7 @@ static int	get_pivot(t_list *stack)
 	if (!stack)
 		return (0);
 	current = stack;
+	max = 0;
 	min = *(int *)current->content;
 	max = *(int *)current->content;
 	while (current)
@@ -80,25 +75,29 @@ static int	get_pivot(t_list *stack)
 
 static void	divide_by_pivot(t_stacks *stacks)
 {
-	int	pivot;
+	int	pivot_a;
+	int	pivot_b;
 	int	loops;
 
-	pivot = get_pivot(stacks->stack_a);
+	pivot_a = get_pivot(stacks->stack_a);
 	loops = ft_lstsize(stacks->stack_a);
-	while (loops-- && stacks->stack_a && !is_above_piv(stacks->stack_a, pivot))
+	while (loops-- && stacks->stack_a && !above_piv(stacks->stack_a, pivot_a))
 	{
-		if (*(int *)stacks->stack_a->content <= pivot)
+		pivot_b = get_pivot(stacks->stack_b);
+		if (*(int *)stacks->stack_a->content <= pivot_a)
 		{
-			while (*(int *)stacks->stack_a->content > *(int *)stacks->stack_a->next->content)
-			{
-				sa(stacks);
-				pb(stacks);
-				loops--;
-			}
 			pb(stacks);
+			if (stacks->stack_b && stacks->stack_b->next &&
+				*(int *)stacks->stack_b->content > pivot_b)
+				rb(stacks);
 		}
 		else if (stacks->stack_a && stacks->stack_a->next)
+		{
+			if (stacks->stack_b && stacks->stack_b->next &&
+				*(int *)stacks->stack_b->content > pivot_b)
+				rb(stacks);
 			ra(stacks);
+		}
 	}
 }
 
