@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/04/01 02:23:33 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:09:15 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ static void	small_sort(t_stacks *stacks, int stack_size)
 	t_list	**stack_a;
 
 	stack_a = &stacks->stack_a;
+	if ((*(int *)(*stack_a)->content > *(int *)(*stack_a)->next->content)
+		&& (*(int *)(*stack_a)->content > *(int *)(*stack_a)->next->content))
+		sa(stacks);
 	if (*(int *)(*stack_a)->content > *(int *)(*stack_a)->next->content)
 		sa(stacks);
 	if (stack_size == 3)
