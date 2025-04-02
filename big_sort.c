@@ -6,47 +6,11 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/04/02 22:48:30 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/03 00:30:22 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// static int	above_piv(t_list *stack, int pivot)
-// {
-// 	if (!stack)
-// 		return (0);
-// 	while (stack)
-// 	{
-// 		if (*(int *)stack->content <= pivot)
-// 			return (0);
-// 		stack = stack->next;
-// 	}
-// 	return (1);
-// }
-
-static void	max_on_top(t_stacks *stacks)
-{
-	int	n;
-	int	size;
-
-	if (!stacks->stack_b || !(stacks->stack_b)->next)
-		return ;
-	n = get_max_index(stacks->stack_b);
-	size = ft_lstsize(stacks->stack_b);
-	if (n == 0)
-		return ;
-	if (n <= (size - 1) / 2)
-	{
-		while (n-- > 0)
-			rb(stacks);
-	}
-	else
-	{
-		while (n++ < size)
-			rrb(stacks);
-	}
-}
 
 static void	fill_array(t_list *stack, int *lst)
 {
@@ -127,8 +91,5 @@ void	big_sort(t_stacks *stacks)
 	if (!stack_is_sorted(stacks->stack_a))
 		sort(stacks);
 	while (stacks->stack_b)
-	{
-		max_on_top(stacks);
-		pa(stacks);
-	}
+		push_max_pair(stacks);
 }

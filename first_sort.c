@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:34:22 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/04/01 17:09:15 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/03 00:30:37 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,6 @@ static int	get_min_index(t_list *stack)
 		}
 	}
 	return (index_min_sofar);
-}
-
-int	get_max_index(t_list *stack)
-{
-	int	i;
-	int	max_sofar;
-	int	index_max_sofar;
-
-	i = 0;
-	index_max_sofar = 0;
-	if (!stack)
-		return (-1);
-	max_sofar = *(int *)stack->content;
-	while (stack)
-	{
-		if (*(int *)stack->content > max_sofar)
-		{
-			max_sofar = *(int *)stack->content;
-			index_max_sofar = i;
-		}
-		stack = stack->next;
-		i++;
-	}
-	return (index_max_sofar);
 }
 
 static void	min_on_top(t_stacks *stacks)
