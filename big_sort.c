@@ -6,7 +6,7 @@
 /*   By: mlemoula <mlemoula@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:44:15 by mlemoula          #+#    #+#             */
-/*   Updated: 2025/04/01 16:06:51 by mlemoula         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:48:30 by mlemoula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,42 +48,13 @@ static void	max_on_top(t_stacks *stacks)
 	}
 }
 
-// static int	get_pivot(t_list *stack)
-// {
-// 	long	min;
-// 	long	max;
-// 	long	pivot;
-// 	t_list	*current;
-
-// 	if (!stack)
-// 		return (0);
-// 	current = stack;
-// 	max = 0;
-// 	min = *(int *)current->content;
-// 	max = *(int *)current->content;
-// 	while (current)
-// 	{
-// 		if (*(int *)current->content > max)
-// 			max = *(int *)current->content;
-// 		if (*(int *)current->content < min)
-// 			min = *(int *)current->content;
-// 		current = current->next;
-// 	}
-// 	pivot = (min + max) / 2;
-// 	return ((int)pivot);
-// }
-
-static void	get_quarts(t_list *stack, int *pivots)
+static void	fill_array(t_list *stack, int *lst)
 {
-	int		*lst;
 	int		i;
 	int		j;
 	int		tmp;
 	t_list	*current;
 
-	lst = (int *)malloc(ft_lstsize(stack) * sizeof(int));
-	if (!lst)
-		return ;
 	i = 0;
 	current = stack;
 	while (current && current->next)
@@ -104,39 +75,21 @@ static void	get_quarts(t_list *stack, int *pivots)
 		lst [j + 1] = tmp;
 		i++;
 	}
+}
+
+static void	get_quarts(t_list *stack, int *pivots)
+{
+	int		*lst;
+
+	lst = (int *)malloc(ft_lstsize(stack) * sizeof(int));
+	if (!lst)
+		return ;
+	fill_array(stack, lst);
 	pivots[0] = lst[ft_lstsize(stack) / 4];
 	pivots[1] = lst[ft_lstsize(stack) / 2];
 	pivots[2] = lst[(3 * ft_lstsize(stack)) / 4];
 	free(lst);
 }
-
-// static void	divide_by_pivot(t_stacks *stacks)
-// {
-// 	int	pivot_a;
-// 	int	pivot_b;
-// 	int	loops;
-
-// 	pivot_a = get_pivot(stacks->stack_a);
-// 	loops = ft_lstsize(stacks->stack_a);
-// 	while (loops-- && stacks->stack_a && !above_piv(stacks->stack_a, pivot_a))
-// 	{
-// 		pivot_b = get_pivot(stacks->stack_b);
-// 		if (*(int *)stacks->stack_a->content <= pivot_a)
-// 		{
-// 			pb(stacks);
-// 			if (stacks->stack_b && stacks->stack_b->next &&
-// 				*(int *)stacks->stack_b->content > pivot_b)
-// 				rb(stacks);
-// 		}
-// 		else if (stacks->stack_a && stacks->stack_a->next)
-// 		{
-// 			if (stacks->stack_b && stacks->stack_b->next &&
-// 				*(int *)stacks->stack_b->content > pivot_b)
-// 				rb(stacks);
-// 			ra(stacks);
-// 		}
-// 	}
-// }
 
 static void	divide_by_pivots(t_stacks *stacks)
 {
@@ -149,16 +102,16 @@ static void	divide_by_pivots(t_stacks *stacks)
 	size = ft_lstsize(stacks->stack_a);
 	while (size > 1 && i < 3)
 	{
-		while (size--)
+		while (size-- && stacks->stack_a && stacks->stack_a->next)
 		{
 			if (*(int *)stacks->stack_a->content <= lst[i])
 			{
 				pb(stacks);
-				if (stacks->stack_b && stacks->stack_b->next &&
-					*(int *)stacks->stack_b->content <= lst[0])
+				if (stacks->stack_b && stacks->stack_b->next
+					&& *(int *)stacks->stack_b->content <= lst[0])
 					rb(stacks);
 			}
-			else if (stacks->stack_a && stacks->stack_a->next)
+			else
 				ra(stacks);
 		}
 		i++;
