@@ -29,6 +29,3 @@ fclean: 	clean
 			rm -f $(NAME)
 
 re: 		fclean all
-
-bonus:		$(OBJS) $(OBJSBONUS)
-			ar -rc $(NAME) $(OBJS) $(OBJSBONUS)
